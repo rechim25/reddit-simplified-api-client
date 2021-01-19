@@ -1,19 +1,18 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <PostsComponent/>
-  </div>
+  <b-container fluid="lg">
+    <posts-component></posts-component>
+  </b-container>
 </template>
 
 <script>
-import PostsComponent from './components/PostsComponent.vue';
+import PostsComponent from "./components/PostsComponent.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    PostsComponent
-  }
-}
+    "posts-component": PostsComponent,
+  },
+};
 </script>
 
 <style>
