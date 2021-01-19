@@ -23,20 +23,14 @@
         </b-form-select>
       </b-col>
     </b-row>
-    <b-row align-h="center">
+    <b-row align-h="center" class="mb-4">
       <b-button @click="getTopPostsFromSubreddit">Search</b-button>
     </b-row>
     <b-row align-h="center">
       <post-card
         v-for="post in posts"
         :key="post.id"
-        :title="post.title"
-        :author="post.author"
-        :text="post.text"
-        :imageUrls="post.images"
-        :videoUrl="post.video"
-        :ups="post.ups"
-        :downs="post.downs"
+        :post="post"
       ></post-card>
     </b-row>
   </b-container>
