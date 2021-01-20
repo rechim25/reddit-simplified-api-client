@@ -6,7 +6,7 @@
 	.st0{font-family:'Arial-BoldMT';}
 	.st1{font-size:5px;}
 </style>
-<polygon points="255.9,310.5 115.4,159.9 96.1,180.5 255.9,352 416.1,180.9 396.7,160.1 "/>
+<polygon fill="rgb(206, 22, 22)" points="255.9,310.5 115.4,159.9 96.1,180.5 255.9,352 416.1,180.9 396.7,160.1 "/>
 <text transform="matrix(1 0 0 1 0 527)" class="st0 st1">Created by Bluetip Design</text>
 <text transform="matrix(1 0 0 1 0 532)" class="st0 st1">from the Noun Project</text>
 </svg>
