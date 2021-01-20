@@ -13,7 +13,9 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
-    "vue-cli": "^2.9.6"
+    "vue-cli": "^2.9.6",
+    "vue-spinner": "^1.0.4",
+    "vue-spinners": "^1.0.2"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.11.5",
