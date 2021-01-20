@@ -78,9 +78,6 @@ export default {
       return this.post.images ? this.post.images[0].url : null;
     },
     getVideoUrl() {
-      console.log(
-        this.post.author + " " + this.post.video ? this.post.video.url : null
-      );
       return this.post.video;
     },
     isImgurGifv() {

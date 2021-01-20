@@ -49,12 +49,15 @@
               class="loader"
             ></loader>
           </div>
-          <div v-if="!isFetchingPosts">
+          <div v-show="!isFetchingPosts && !fetchError">
             <post-card
               v-for="post in posts"
               :key="post.id"
               :post="post"
             ></post-card>
+          </div>
+          <div class="error" v-show="!isFetchingPosts && fetchError">
+            <p>{{ this.fetchError }} 😑</p>
           </div>
         </b-col>
       </b-row>
@@ -68,7 +71,7 @@ import PostCard from "./PostCard.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 const DEFAULT_LIMIT = 25;
-
+const DEFAULT_ERROR = "Something went wrong...";
 const timeframeQueryMap = {
   Now: "now",
   Today: "today",
@@ -87,7 +90,7 @@ export default {
     return {
       posts: [],
       count: 0,
-      error: null,
+      fetchError: null,
       inputSubreddit: null,
       currentSubreddit: null,
       selectedTimeframe: "Today",
@@ -99,7 +102,7 @@ export default {
   },
   computed: {
     headerText() {
-      if (this.currentSubreddit) {
+      if (this.currentSubreddit && !this.isFetchingPosts && !this.fetchError) {
         return `Top Posts on /r/${this.currentSubreddit}`;
       }
       return "Check out the top posts on your favorite subreddit!";
@@ -115,20 +118,16 @@ export default {
         DEFAULT_LIMIT
       )
         .then((res) => {
-          console.log(res);
           if (res && res.status == 200 && res.data) {
             this.posts = res.data.posts;
-            console.log(this.posts);
             this.count = res.data.count || 0;
-            this.error = null;
+            this.fetchError = null;
           }
           this.isFetchingPosts = false;
         })
         .catch((err) => {
-          // this.error = err;
-          console.log("ERROR");
-          console.log(err.response);
           this.currentSubreddit = null;
+          this.fetchError = err.response ? err.response.data : DEFAULT_ERROR;
           this.isFetchingPosts = false;
         });
     },
@@ -200,5 +199,13 @@ export default {
 .loader {
   margin: auto;
   padding: 20px;
+}
+
+.error {
+  color: rgb(74, 78, 136);
+  font-size: 30px;
+  margin: 30px auto;
+  font-weight: 500;
+  text-align: center;
 }
 </style>
